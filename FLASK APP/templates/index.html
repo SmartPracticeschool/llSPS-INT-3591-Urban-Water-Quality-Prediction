@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  
+
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.login{
+top: 50%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Urban Water Quality Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post">
+    	<input type="text" name="do" placeholder="D.O. (mg/l)" required="required" />
+	<input type="text" name="ph" placeholder="PH" required="required" />
+	<input type="text" name="co" placeholder="CONDUCTIVITY (µmhos/cm)" required="required" />
+	<input type="text" name="bod" placeholder="B.O.D. (mg/l)" required="required" />
+	<input type="text" name="na" placeholder="NITRATENAN N+ NITRITENANN (mg/l)" required="required" />
+        <input type="text" name="tc" placeholder="TOTAL COLIFORM (MPN/100ml)Mean" required="required" />
+	<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
+
